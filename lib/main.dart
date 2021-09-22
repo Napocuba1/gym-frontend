@@ -11,7 +11,9 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       onGenerateRoute: RouteGenerator.generateRoute,
       title: 'Gimnasio',
-      
+      theme: ThemeData(
+        
+      ),
     );
   }
 }

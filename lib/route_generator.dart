@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gym/src/pages/login.dart';
 
 class RouteGenerator{
   static Route<dynamic> generateRoute(RouteSettings settings){
@@ -6,7 +7,7 @@ class RouteGenerator{
 
     switch (settings.name) {
       case '/':
-        // return ;
+        return MaterialPageRoute(builder: (_)=> Login());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
