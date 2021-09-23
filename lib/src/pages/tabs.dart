@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:gym/config/ui_icons.dart';
+import 'package:gym/src/pages/account.dart';
+import 'package:gym/src/pages/reservation.dart';
 
 class Tabs extends StatefulWidget {
-  Tabs({Key? key}) : super(key: key);
+  Tabs({Key? key, required int this.currentTab}) : super(key: key);
   String currentTitle = 'Gimnasio';
+  Widget currentPage = Account();
   int selectedTab = 1;
   int currentTab = 1;
 
@@ -33,29 +36,16 @@ class _TabsState extends State<Tabs> {
       switch (tabItem) {
         case 0:
           widget.currentTitle = 'Perfil';
-          // widget.currentPage = Account();
+          widget.currentPage = Account();
           break;
         case 1:
           widget.currentTitle = 'Reservas';
-          // widget.currentPage = Home();
+          widget.currentPage = Reservation();
           // widget.currentPage = AccountWidget();
           break;
         case 2:
           widget.currentTitle = 'Planes';
           // widget.currentPage = Home();
-          break;
-        case 3:
-          widget.currentTitle = 'Messages';
-          // widget.currentPage = MessagesWidget();
-          break;
-        case 4:
-          widget.currentTitle = 'Favorites';
-          // widget.currentPage = FavoritesWidget();
-          break;
-        case 5:
-          widget.selectedTab = 3;
-          widget.currentTitle = 'Chat';
-          // widget.currentPage = ChatWidget();
           break;
       }
     });
@@ -79,6 +69,7 @@ class _TabsState extends State<Tabs> {
               child: Text(widget.currentTitle, style: Theme.of(context).textTheme.headline3),
             ),
           ),
+          body: widget.currentPage,
           bottomNavigationBar: bottomNavigatorBarItem(size, orientation),
         ),
       ),
@@ -94,10 +85,10 @@ class _TabsState extends State<Tabs> {
       iconSize: 22,
       elevation: 0,
       backgroundColor: Colors.transparent,
-      selectedIconTheme: IconThemeData(size: 25),
+      selectedIconTheme: const IconThemeData(size: 25),
       unselectedItemColor: Theme.of(context).hintColor.withOpacity(1),
       currentIndex: widget.selectedTab,
-      onTap: (int i) => this._selectTab(i),
+      onTap: (int i) => _selectTab(i),
       items: [
         // BottomNavigationBarItem(icon: Icon(Typiconsfont.ticket, size: orientation == Orientation.portrait && size.height <1000? 24: orientation == Orientation.landscape && size.width <1000? 24: 35), label: ''),
         // BottomNavigationBarItem(icon: Icon(Typiconsfont.store, size: orientation == Orientation.portrait && size.height <1000? 24: orientation == Orientation.landscape && size.width <1000? 24: 35), label: ''),
@@ -110,7 +101,7 @@ class _TabsState extends State<Tabs> {
             height: orientation == Orientation.portrait && size.height <1000? 45: orientation == Orientation.landscape && size.width <1000? 45: 60,
             decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.secondary,
-              borderRadius: BorderRadius.all(
+              borderRadius: const BorderRadius.all(
                 Radius.circular(50),
               ),
               boxShadow: [
@@ -125,7 +116,7 @@ class _TabsState extends State<Tabs> {
             height: orientation == Orientation.portrait && size.height <1000? 45: orientation == Orientation.landscape && size.width <1000? 45: 60,
             decoration: BoxDecoration(
               color: Theme.of(context).primaryColor,
-              borderRadius: BorderRadius.all(
+              borderRadius: const BorderRadius.all(
                 Radius.circular(50),
               ),
               boxShadow: [
@@ -137,9 +128,7 @@ class _TabsState extends State<Tabs> {
           ),
           
         ),
-        // BottomNavigationBarItem(icon: Icon(Typiconsfont.address_book, size: orientation == Orientation.portrait && size.height <1000? 24: orientation == Orientation.landscape && size.width <1000? 24: 35), label: ''),
         BottomNavigationBarItem(icon: Icon(Icons.fact_check_outlined, size: orientation == Orientation.portrait && size.height <1000? 24: orientation == Orientation.landscape && size.width <1000? 24: 35), label: ''),
-        // BottomNavigationBarItem(icon: Icon(UiIcons.chat, size: orientation == Orientation.portrait && size.height <1000? 24: orientation == Orientation.landscape && size.width <1000? 24: 35), label: ''),
       ],
     );
   }

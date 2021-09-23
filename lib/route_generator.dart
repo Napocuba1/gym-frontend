@@ -10,8 +10,10 @@ class RouteGenerator{
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(builder: (_)=> Login());
+      case '/Home':
+        return MaterialPageRoute(builder: (_)=> Tabs(currentTab: 1));
       case '/Tabs':
-        return MaterialPageRoute(builder: (_)=> Tabs());
+        return MaterialPageRoute(builder: (_)=> Tabs(currentTab: int.parse(args.toString())));
       case '/SignUp':
         return MaterialPageRoute(builder: (_)=> SignUp());
       default:

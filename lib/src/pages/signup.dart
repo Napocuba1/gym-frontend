@@ -300,7 +300,7 @@ class _SignUpState extends State<SignUp> {
           ] 
         ),
       ),
-      onPressed: () => Navigator.of(context).pushNamedAndRemoveUntil('/SignIn', (route) => false), 
+      onPressed: () => Navigator.of(context).pushNamedAndRemoveUntil('/', (route) => false), 
     );
   }
 }

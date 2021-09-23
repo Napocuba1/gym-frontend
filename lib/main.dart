@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
     return Provider(
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: '/Tabs',
+        initialRoute: '/Home',
         onGenerateRoute: RouteGenerator.generateRoute,
         title: 'Gimnasio',
         theme: ThemeData(
